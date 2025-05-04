@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LULAS SYSTEM - Soporte y Reparación de Computadoras</title>
+    <style>
+        :root {
+            --primary-color: #1E88E5;
+            --secondary-color: #0D47A1;
+            --accent-color: #00E676;
+            --light-color: #f8f9fa;
+            --dark-color: #212121;
+            --font-main: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-left: 1rem;
+            padding-left: 1rem;
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        nav {
+            display: flex;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+        
+        section {
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .hero {
+            height: 80vh;
+            min-height: 500px;
+            background: url('/api/placeholder/1200/600') center/cover fixed;
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: -1.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 136, 229, 0.9), rgba(13, 71, 161, 0.9));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 1.5rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            background-color: #00C853;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            top: 0;
+        }
+        
+        .service-card:hover {
+            top: -10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-img {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 2rem;
+        }
+        
+        .service-content h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .service-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .about-img::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 60px;
+            height: 60px;
+            border-top: 8px solid var(--accent-color);
+            border-left: 8px solid var(--accent-color);
+        }
+        
+        .about-img::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 60px;
+            height: 60px;
+            border-bottom: 8px solid var(--accent-color);
+            border-right: 8px solid var(--accent-color);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .feature-list {
+            margin: 2rem 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 230, 118, 0.1);
+            color: var(--accent-color);
+            border-radius: 50%;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        form {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--font-main);
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+        }
+        
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-column p {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        /* Scroll-up button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 1rem;
+                flex-direction: column;
+            }
+            
+            .tagline {
+                margin-left: 0;
+                padding-left: 0;
+                border-left: none;
+                margin-top: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 6rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .service-badge {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                right: 20px;
+                bottom: 20px;
+            }
+            
+            .scroll-top {
+                left: 20px;
+                bottom: 20px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .form-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo">LULAS SYSTEM</div>
+                <div class="tagline">Soluciones Tecnológicas Integrales</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>Soluciones Tecnológicas Profesionales</h1>
+                <p>En LULAS SYSTEM ofrecemos soporte técnico, reparación de equipos y servicios informáticos integrales para mantener tu tecnología funcionando al máximo rendimiento.</p>
+                <div class="hero-buttons">
+                    <a href="#servicios" class="btn btn-primary">Nuestros Servicios</a>
+                    <a href="#contacto" class="btn btn-secondary">Contactar Ahora</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios">
+            <h2>Nuestros Servicios</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="SOPTECNICO001.JPG" alt="Soporte Técnico">
+                    </div>
+                    <div class="service-content">
+                        <h3>Soporte Técnico</h3>
+                        <p>Brindamos asistencia técnica para solucionar problemas en tus equipos y sistemas informáticos, ya sea de forma presencial o remota.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="SOPTECNICO002.JPG" alt="Reparación de PCs y Laptops">
+                    </div>
+                    <div class="service-content">
+                        <h3>Reparación de PCs y Laptops</h3>
+                        <p>Diagnosticamos y reparamos todo tipo de problemas en computadoras de escritorio y laptops, tanto hardware como software.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="SOPTECNICO003.JPG" alt="Mantenimiento de Impresoras">
+                    </div>
+                    <div class="service-content">
+                        <h3>Mantenimiento de Impresoras</h3>
+                        <p>Realizamos limpieza, reparación y mantenimiento preventivo de impresoras para garantizar su óptimo funcionamiento.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="SOFTWARE.png" alt="Venta de Software">
+                    </div>
+                    <div class="service-content">
+                        <h3>Venta de Software</h3>
+                        <p>Ofrecemos licencias originales de software para satisfacer las necesidades de tu negocio o uso personal.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="IMPRESIONES.JPG" alt="Impresiones">
+                    </div>
+                    <div class="service-content">
+                        <h3>Impresiones</h3>
+                        <p>Servicio de impresión de alta calidad para documentos, fotografías, presentaciones, reportes y más.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="DISGRAFICO002.JPG" alt="Diseño Gráfico">
+                    </div>
+                    <div class="service-content">
+                        <h3>Diseño Gráfico</h3>
+                        <p>Creamos logotipos, tarjetas de presentación, volantes, banners y todo tipo de material gráfico para tu negocio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosotros">
+            <h2>Sobre Nosotros</h2>
+            <div class="about">
+                <div class="about-img">
+                    <img src="LULAS_TI.JPG" alt="LULAS SYSTEM">
+                </div>
+                <div class="about-content">
+                    <p>En <strong>LULAS SYSTEM</strong> somos un equipo de profesionales en tecnología comprometidos con brindar soluciones efectivas a nuestros clientes.</p>
+                    <p>Contamos con más de 25 años de experiencia en el sector, ofreciendo servicios de alta calidad en soporte técnico, reparación de equipos, mantenimiento de impresoras, venta de software, impresiones y diseño gráfico.</p>
+                    <p>Nuestra misión es proporcionar soluciones tecnológicas integrales que permitan a nuestros clientes optimizar sus recursos y mejorar su productividad, con atención personalizada y precios competitivos.</p>
+                    <p>Trabajamos con empresas, instituciones educativas, profesionales independientes y usuarios particulares, adaptando nuestros servicios a las necesidades específicas de cada cliente.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Ubicación</h3>
+                    <p>Jr. Moquegua #3822, San Martin de Porras</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Teléfono</h3>
+                    <p>+51 980 628 716</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>eduardo.milla@gmail.com</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Horario</h3>
+                    <p>Lunes a Domingo: <br>7am-11pm</p>
+                </div>
+            </div>
+            
+            <form id="contact-form" action="https://formspree.io/f/xrbqpwbd" method="POST">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Asunto</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit">Enviar mensaje</button>
+                    <a href="https://wa.me/51980628716" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                    </a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Sobre Nosotros</h4>
+                    <p>LULAS SYSTEM es una empresa comprometida con brindar soluciones tecnológicas de calidad a precios competitivos.</p>
+                    <p>Nos especializamos en soporte técnico, reparación de equipos y servicios informáticos para empresas y particulares.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="#servicios">Soporte Técnico</a></li>
+                        <li><a href="#servicios">Reparación de PCs y Laptops</a></li>
+                        <li><a href="#servicios">Mantenimiento de Impresoras</a></li>
+                        <li><a href="#servicios">Diseño Gráfico</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Jr. Moquegua #3822, San Martin de Porras</p>
+                    <p><i class="fas fa-phone"></i> +51 980 628 716</p>
+                    <p><i class="fas fa-envelope"></i> eduardo.milla@gmail.com</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100012468930244"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/edumilla"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/51980628716"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LULAS SYSTEM. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/51980628716" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Scroll-to-top Button -->
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+      // Script para manejar el formulario usando Formspree
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    
+    fetch("https://formspree.io/f/xrbqpwbd", {
+        method: "POST",
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('¡Gracias por contactarnos! Nos comunicaremos contigo pronto.');
+            this.reset();
+        } else {
+            throw new Error('Hubo un problema al enviar el formulario.');
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error.message);
+    });
+});
+
+        // Scroll suave para los enlaces del menú
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Revelar secciones al hacer scroll
+        const revealSections = () => {
+            const sections = document.querySelectorAll('section');
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < windowHeight - 150) {
+                    section.classList.add('visible');
+                }
+            });
+        };
+        
+        // Mostrar/ocultar botón de scroll hacia arriba
+        const toggleScrollButton = () => {
+            const scrollBtn = document.querySelector('.scroll-top');
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        };
+        
+        // Función para scroll hacia arriba
+        document.querySelector('.scroll-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Inicializar
+        window.addEventListener('load', () => {
+            revealSections();
+            toggleScrollButton();
+        });
+        
+        window.addEventListener('scroll', () => {
+            revealSections();
+            toggleScrollButton();
+        });
+    </script>
+
+
+
+</body>
+</html>
